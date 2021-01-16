@@ -5,7 +5,7 @@ const passportConfig = passport => {
 	passport.serializeUser((user, done) => {
 		done(null, user);
 	});
-	passport.deserialize((user, done) => {
+	passport.deserializeUser((user, done) => {
 		done(null, user);
 	});
 };

@@ -16,15 +16,7 @@ dbConnection()
 	.then(resp => console.log(resp))
 	.catch(err => console.error(err));
 
-const basePath = '/v1/api';
-const defaultResponseAPI = (_, res) => {
-	res.status(200).json({
-		msg: 'API is running',
-	});
-};
-
-app.get(basePath, defaultResponseAPI);
-app.use(routes);
+routes(app);
 
 passportConfig(passport);
 app.use(passport.initialize());
