@@ -1,9 +1,26 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const SearchSchema = new Schema({
-	query: {type: String, required: true, upperCase: true},
-    response: { type: Object, required: true }
-}, {timestamps: true});
+const SearchSchema = new Schema(
+	{
+		song: {
+			type: String,
+			required: true,
+			uppercase: true,
+		},
+		artist: {
+			type: String,
+			required: true,
+			uppercase: true,
+		},
+		response: {
+			type: Object,
+			required: true,
+		},
+	},
+	{
+		timestamps: true,
+	}
+);
 
-export default mongoose.model("Search", SearchSchema);
+export default mongoose.model('Search', SearchSchema);

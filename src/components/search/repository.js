@@ -1,10 +1,9 @@
-import Search from './model'
+import Search from './model';
 
-const save = async ({ id, query, response }) => {
-    let data = { query, response };
-    return Search.updateOne({_id: id}, data, {upsert: true, setDefaultsOnInsert: true});
+const save = async searchData => {
+	return Search.insertMany([searchData]);
 };
 
 export default {
-    save
-}
+	save,
+};

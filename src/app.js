@@ -1,14 +1,24 @@
-import './config/dotenv'
+import './config/dotenv';
 import express from 'express';
-import mongoose from 'mongoose';
-import expressConfig from './config/expressConfig'
-import { url_db } from './config/dotenv'
+import expressConfig from './config/expressConfig';
+import dbConnection from './libs/db/mongoose';
+import search from './components/search/routes';
 
 const app = express();
 expressConfig(app);
 
-// mongoose.connect(url_db)
-// .then(console.log('Data base online'))
-// .catch(error => console.error(error));
+dbConnection()
+	.then(resp => console.log(resp))
+	.catch(err => console.error(err));
+
+const basePath = '/v1/api';
+const defaultResponseAPI = (_, res) => {
+	res.status(200).json({
+		msg: 'API is running',
+	});
+};
+
+app.get(basePath, defaultResponseAPI);
+app.use(`${basePath}/search`, search);
 
 export default app;
