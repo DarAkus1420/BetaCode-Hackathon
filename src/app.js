@@ -1,19 +1,31 @@
 import './config/dotenv';
 import express from 'express';
+import expressConfig from './config/expressConfig';
+import dbConnection from './libs/db/mongoose';
+import search from './components/search/routes';
 import mongoose from 'mongoose';
 import passport from 'passport';
 import passportConfig from './config/passportConfig';
-import expressConfig from './config/expressConfig';
 import { url_db } from './config/dotenv';
 
 const app = express();
 expressConfig(app);
 
+dbConnection()
+	.then(resp => console.log(resp))
+	.catch(err => console.error(err));
+
+const basePath = '/v1/api';
+const defaultResponseAPI = (_, res) => {
+	res.status(200).json({
+		msg: 'API is running',
+	});
+};
+
+app.get(basePath, defaultResponseAPI);
+app.use(`${basePath}/search`, search);
+
+
 passportConfig(passport);
 app.use(passport.initialize());
-// mongoose.connect(url_db)
-// .then(console.log('Data base online'))
-// .catch(error => console.error(error));
-
 export default app;
-
