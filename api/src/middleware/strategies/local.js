@@ -3,16 +3,17 @@ import bcrypt from 'bcrypt';
 import User from '../../components/users/model';
 
 const strategyConfig = {
-	emailField: 'email',
+	usernameField: 'email',
 	passwordField: 'password',
 	session: false,
 };
 
-const strategy = new Strategy(strategyConfig, async (email, password, done) => {
+const localStrategy = new Strategy(strategyConfig, async (email, password, done) => {
 	try {
 		const user = await User.findByEmail(email.toLowerCase());
 		if (!user) return done(null, false);
 		if (!bcrypt.compareSync(password, user.password)) return done(null, false);
+		console.log('verificacion exitosa');
 		return done(null, user);
 	} catch (e) {
 		console.error(e);
@@ -20,4 +21,4 @@ const strategy = new Strategy(strategyConfig, async (email, password, done) => {
 	}
 });
 
-export default strategy;
+export default localStrategy;
