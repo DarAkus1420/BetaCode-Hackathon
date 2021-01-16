@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-dotenv.config()
+dotenv.config();
 
-export const port = process.env.PORT;
-export const url_db = process.env.URL_DB;
+export const PORT = process.env.PORT;
+export const URL_DB = process.env.URL_DB;
