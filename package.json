@@ -4,6 +4,7 @@
 	"description": "Mr Robot Awards - API Hackathon 2021 Recoders",
 	"main": "server.js",
 	"scripts": {
+		"dev": "nodemon -r esm --inspect server.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
