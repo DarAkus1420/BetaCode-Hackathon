@@ -1,0 +1,33 @@
+import User from '../users/model';
+import { sign } from 'jsonwebtoken';
+import { JWT_EXPIRATION, JWT_PASS } from '../../config/dotenv';
+import { createdResponse, conflictResponse } from '../../utils/responses';
+import userService from '../users/services';
+
+const authService = {
+	generateJwt(user) {
+		const payload = {
+			username: user.name,
+			sub: user._id,
+		};
+
+		console.log(payload);
+		const jwt = sign(payload, JWT_PASS, {
+			expiresIn: JWT_EXPIRATION,
+		});
+		return { jwt, user };
+	},
+	async register(payload) {
+		// evaluate if email alredy used a person
+		const emailExists = await userService.verifyIfEmailExists(payload.email);
+		if (emailExists) return conflictResponse('Correo en uso');
+
+		let user = await User.create(payload);
+		await user.save();
+
+		console.log(user.email, 'se registro con exito');
+		return createdResponse('registrado con exito', { token: this.generateJwt(user), user });
+	},
+};
+
+export default authService;
