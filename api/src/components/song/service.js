@@ -11,10 +11,10 @@ const promiseAditionalData = item => {
 		let nameSong = item.name;
 		let artistSong = item && item.artists && item.artists[0] ? item.artists[0].name : null;
 
-		let videoLink = await youtubeService.search(nameSong);
+		let video = await youtubeService.search(artistSong, nameSong);
 		let lyrics = await lyricsService.search(artistSong, nameSong);
 
-		item.youtubeLink = videoLink;
+		item.video = video;
 		item.lyrics = lyrics;
 		resolve(item);
 	});

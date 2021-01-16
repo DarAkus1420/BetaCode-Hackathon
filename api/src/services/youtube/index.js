@@ -1,13 +1,13 @@
-import youtubeClient from './client';
-import { YOUTUBE_VIDEO_BASE_URL, DEBUG } from '../../config/dotenv';
+import youtube from 'scrape-youtube';
+import { DEBUG } from '../../config/dotenv';
 
-const search = async songName => {
+const search = async (artistSong, nameSong) => {
 	try {
-		let response = await youtubeClient().searchVideos(songName, 4);
-		let dataLength = response.length;
+		let response = await youtube.search(`${nameSong} ${artistSong}`, { type: 'video' });
+		let dataLength = response.videos.length;
 		if (dataLength > 0) {
-			let ramdomItem = Math.floor(Math.random() * dataLength);
-			return `${YOUTUBE_VIDEO_BASE_URL}${response[ramdomItem].id}`;
+			let randomItem = Math.floor(Math.random() * dataLength);
+			return response.videos[randomItem];
 		}
 		return null;
 	} catch (error) {
