@@ -11,18 +11,18 @@ const authService = {
 			sub: user._id,
 		};
 
-		console.log(payload);
 		const jwt = sign(payload, JWT_PASS, {
 			expiresIn: JWT_EXPIRATION,
 		});
-		return { jwt, user };
+		console.log('Jwt creado con exito');
+		return createdResponse('Jwt creado con exito', { jwt, user });
 	},
 	async register(payload) {
 		// evaluate if email alredy used a person
 		const emailExists = await userService.verifyIfEmailExists(payload.email);
 		if (emailExists) return conflictResponse('Correo en uso');
 
-		let user = await User.create(payload);
+		let user = await User.createNewUser(payload);
 		await user.save();
 
 		console.log(user.email, 'se registro con exito');

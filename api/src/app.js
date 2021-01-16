@@ -12,12 +12,12 @@ import routes from './routes/index';
 const app = express();
 expressConfig(app);
 
+passportConfig(passport);
+app.use(passport.initialize());
 dbConnection()
 	.then(resp => console.log(resp))
 	.catch(err => console.error(err));
 
 routes(app);
 
-passportConfig(passport);
-app.use(passport.initialize());
 export default app;

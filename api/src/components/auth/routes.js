@@ -6,7 +6,11 @@ import authSchema from './schema';
 
 const authRouter = Router();
 
-authRouter.post('/auth/login', passport.authenticate('local'), authController.generateJwt);
+authRouter.post(
+	'/auth/login',
+	passport.authenticate('local', { session: false }),
+	authController.generateJwt
+);
 
 authRouter.post('/auth/register', validation(authSchema.register, 'body'), authController.register);
 
