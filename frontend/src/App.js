@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Login from './components/Login';
 import Banner from './components/Banner';
 import Esquema from './components/Esquema';
-import Validar from './components/Validar';
+//import Validar from './components/Validar';
 
 function App() {
 	const [count, setCount] = useState(13);

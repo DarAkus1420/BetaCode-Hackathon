@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function Validar(name, password) {
 	let nameV = name;
 	let passwordV = password;

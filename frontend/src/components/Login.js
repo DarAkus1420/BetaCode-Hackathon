@@ -1,4 +1,5 @@
 import React from 'react';
+import Validar from './Validar';
 
 export default function Login() {
 	const user = {
