@@ -1,10 +1,16 @@
 import React from 'react';
 
-export default function HolaMundo() {
+export default function Esquema() {
 	return (
 		<div>
-			<h1>Hola Mundo!</h1>
-			<h2>Adios</h2>
+			<div className="col-11" id="contenedor-vista-busqueda">
+				<div className="card">
+					<img src="{}"></img>
+					<p>{}</p>
+					<p>{}</p>
+					<p>{}</p>
+				</div>
+			</div>
 		</div>
 	);
 }
