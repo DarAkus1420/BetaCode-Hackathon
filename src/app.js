@@ -1,12 +1,12 @@
 import './config/dotenv';
 import express from 'express';
+
 import expressConfig from './config/expressConfig';
 import dbConnection from './libs/db/mongoose';
 import search from './components/search/routes';
-import mongoose from 'mongoose';
+
 import passport from 'passport';
 import passportConfig from './config/passportConfig';
-import { url_db } from './config/dotenv';
 
 const app = express();
 expressConfig(app);
@@ -24,7 +24,6 @@ const defaultResponseAPI = (_, res) => {
 
 app.get(basePath, defaultResponseAPI);
 app.use(`${basePath}/search`, search);
-
 
 passportConfig(passport);
 app.use(passport.initialize());
