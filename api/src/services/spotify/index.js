@@ -28,9 +28,9 @@ const search = async ({ query, limit = 10, type = 'track' }) => {
 		}
 
 		return { items: tracks };
-	} catch (e) {
-		if (DEBUG === '1') console.log(e);
-		return null;
+	} catch (error) {
+		if (DEBUG === '1') console.log(error);
+		return { message: error.message, code: error.code };
 	}
 };
 

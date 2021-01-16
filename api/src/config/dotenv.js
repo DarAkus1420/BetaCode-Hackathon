@@ -14,4 +14,4 @@ export const SPOTIFY_CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 export const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 export const YOUTUBE_VIDEO_BASE_URL = process.env.YOUTUBE_VIDEO_BASE_URL;
 
-export const API_LYRICS_URL = 'https://api.lyrics.ovh/v1/';
+export const API_LYRICS_URL = process.env.API_LYRICS_URL;

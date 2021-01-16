@@ -12,7 +12,7 @@ const search = async songName => {
 		return null;
 	} catch (error) {
 		if (DEBUG === '1') console.log(error);
-		return null;
+		return { message: error.message, code: error.code };
 	}
 };
 

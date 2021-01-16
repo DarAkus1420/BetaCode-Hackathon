@@ -1,20 +1,13 @@
 import { okResponse, restResponse, errorResponse } from '../../utils/responses';
-import configDefault from '../../config';
-import spotifyService from '../../services/spotify';
-import aditionalData from '../../libs/aditionalData';
 import songRepository from './repository';
+import songService from './service';
 import { DEBUG } from '../../config/dotenv';
-const { SEARCH_SUCCESS } = configDefault.responseMessage.songs;
 
 const songController = {
 	async search(req, res) {
 		try {
 			let { query, limit } = req.query;
-
-			let spotifyData = await spotifyService.search({ query, limit });
-			let extendsInfoData = await aditionalData.add(spotifyData);
-
-			let response = okResponse(SEARCH_SUCCESS, extendsInfoData);
+			let response = await songService.search({ query, limit });
 			restResponse(response, res);
 		} catch (e) {
 			if (DEBUG === '1') console.error(e);
