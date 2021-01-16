@@ -1,6 +1,6 @@
-export default function Validar(name, password) {
-	let nameV = name;
-	let passwordV = password;
+export default function Validar(props) {
+	let nameV = props.name;
+	let passwordV = props.password;
 
 	let probName = '';
 	let probPass = '';
