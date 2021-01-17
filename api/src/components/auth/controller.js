@@ -5,7 +5,9 @@ const authController = {
 	async generateJwt(req, res) {
 		try {
 			let { user } = req;
-			const response = authService.generateJwt(user);
+			console.log(user);
+			const response = authService.login(user);
+			console.log(response);
 			restResponse(response, res);
 		} catch (e) {
 			console.error(e);
