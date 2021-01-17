@@ -7,7 +7,7 @@ import userService from '../users/services';
 const authService = {
 	generateJwt(user) {
 		const payload = {
-			username: user.name,
+			email: user.email,
 			sub: user._id,
 		};
 
@@ -31,7 +31,6 @@ const authService = {
 		await user.save();
 
 		const jwt = this.generateJwt(user);
-
 		console.log(user.email, 'se registro con exito');
 		return createdResponse('registrado con exito', { token: jwt, user });
 	},

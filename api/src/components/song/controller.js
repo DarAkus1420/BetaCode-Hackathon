@@ -7,6 +7,7 @@ const songController = {
 	async search(req, res) {
 		try {
 			let { query, limit } = req.query;
+			console.log(query, limit);
 			let response = await songService.search({ query, limit });
 			restResponse(response, res);
 		} catch (e) {
@@ -20,7 +21,7 @@ const songController = {
 			let data = req.body;
 
 			let saveSong = await songRepository.save(data);
-			let response = okResponse(SAVE_SUCCESS, saveSong);
+			//let response = okResponse(SAVE_SUCCESS, saveSong);
 
 			restResponse(response, res);
 		} catch (e) {
