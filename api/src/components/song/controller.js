@@ -1,5 +1,4 @@
-import { okResponse, restResponse, errorResponse } from '../../utils/responses';
-import songRepository from './repository';
+import { restResponse, errorResponse } from '../../utils/responses';
 import songService from './service';
 import { DEBUG } from '../../config/dotenv';
 
@@ -16,6 +15,7 @@ const songController = {
 			restResponse(error, res);
 		}
 	},
+
 	async save(req, res) {
 		try {
 			let data = req.body;
@@ -30,6 +30,7 @@ const songController = {
 			restResponse(error, res);
 		}
 	},
+
 };
 
 export default songController;

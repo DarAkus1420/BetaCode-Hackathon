@@ -9,16 +9,32 @@ const SongSchema = new Schema(
 		},
 		name: {
 			type: String,
-			required: true,
 			uppercase: true,
+			required: true,
+		},
+		type: {
+			type: String,
+		},
+		album: {
+			type: Object,
 		},
 		artists: {
-			type: Object,
-			required: true,
+			type: Array,
 		},
-		details: {
+		externalUrls: {
 			type: Object,
-			required: true,
+		},
+		durationMs: {
+			type: Number,
+		},
+		popularity: {
+			type: Number,
+		},
+		video: {
+			type: Object,
+		},
+		lyrics: {
+			type: String,
 		},
 	},
 	{
