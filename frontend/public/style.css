@@ -165,7 +165,20 @@ body:before {
 
 .btn.yo:hover {
 	color: #f4f4f4;
-	background-color: #c1000;
+	background-color: #c1000c;
+}
+
+.busqueda-class {
+	align-items: center;
+	text-align: center;
+	margin-top: 4vh;
+}
+
+#busqueda {
+	width: 70vw;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 @media (min-width: 768px) {
