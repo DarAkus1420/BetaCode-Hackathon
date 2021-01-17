@@ -24,17 +24,17 @@ export default function Banner(props) {
 							<span class="navbar-toggler-icon"></span>
 						</button>
 						<div className=" collapse navbar-collapse" id="navbarNavAltMarkup">
-							<div className="navg navbar-nav w-100 justify-content-center">
+							<div className="navg navbar-nav w-100">
 								<Link className="nav-item nav-link active" to="/">
 									Home <span class="sr-only">(current)</span>
 								</Link>
 
 								{!isUser ? (
-									<div>
-										<Link className="" to="/login">
+									<div id="botones">
+										<Link className="log-banner" to="/login">
 											Login
 										</Link>
-										<Link className="" to="/register">
+										<Link className="reg-banner" to="/register">
 											Register
 										</Link>
 									</div>

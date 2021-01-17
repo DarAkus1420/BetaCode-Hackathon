@@ -28,7 +28,7 @@ const Busqueda = props => {
 	return (
 		<>
 			<form onSubmit={sendSearch}>
-				<div class="form-group">
+				<div class="form-group busqueda-class">
 					<label for="busqueda">Buscar canción</label>
 					<input
 						type="text"
