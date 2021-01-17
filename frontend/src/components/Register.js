@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 export default function Register(props) {
 	const { setIsUser } = props;
-	const BASE_URL = 'http://localhost:3000/api/v1';
+	const BASE_URL = process.env.REACT_APP_BASE_URL;
 	const history = useHistory();
 	//const register = props.register;
 	const [user, setUser] = useState({
@@ -23,6 +23,7 @@ export default function Register(props) {
 
 	const sendUser = event => {
 		event.preventDefault();
+		console.log(BASE_URL);
 		axios.post(`${BASE_URL}/auth/register`, { ...user }).then(response => {
 			console.log(response.data);
 			localStorage.setItem('token', response.data.data.token);

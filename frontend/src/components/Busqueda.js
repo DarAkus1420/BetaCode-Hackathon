@@ -5,7 +5,7 @@ import { Input } from 'antd';*/
 
 const Busqueda = props => {
 	const { setSongs } = props;
-	const BASE_URL = 'http://localhost:3000/api/v1';
+	const BASE_URL = process.env.REACT_APP_BASE_URL;
 	const [search, setSearch] = useState();
 
 	const handleInputChange = event => {
