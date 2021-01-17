@@ -2,7 +2,7 @@ import './App.css';
 //import { useState } from 'react';
 import Login from './components/Login';
 import Register from './components/Register';
-//import Banner from './components/Banner';
+import Banner from './components/Banner';
 import Home from './components/Home';
 //import Multiplicaciones from './components/Multiplicaciones';
 //import Validar from './components/Validar';
@@ -22,6 +22,7 @@ function App() {
 		//<button onClick={() => setCount(count + 1)}>Click me</button>
 		//</div>
 		<Router>
+			<Banner />
 			<Switch>
 				<Route exact path="/">
 					<Home />
