@@ -11,7 +11,7 @@ export default function Logout() {
 
 	return (
 		<>
-			<button className="btn" onClick="limpiar">
+			<button className="btn" onClick={limpiar}>
 				Desconectarse
 			</button>
 		</>

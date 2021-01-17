@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Logout from './Logout';
 
 export default function Banner() {
 	return (
@@ -10,6 +11,7 @@ export default function Banner() {
 			<Link className="btn btn-primary" to="/register">
 				Register
 			</Link>
+			<Logout />
 			<div class="col-3">
 				<img src=""></img>
 			</div>
