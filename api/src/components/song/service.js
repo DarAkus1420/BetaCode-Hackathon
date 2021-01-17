@@ -38,8 +38,8 @@ const songService = {
 		return okResponse(SEARCH_SUCCESS, { data: extendsInfoData });
 	},
 	async save(data) {
-		let validateIfExist = await songRepository.searchByIdSpotify(data.spotifyId);
-		if (validateIfExist) return 'This song already exists in favorites';
+		let existSong = await songRepository.searchByIdSpotify(data.spotifyId);
+		if (existSong) return existSong;
 
 		let saveSong = await songRepository.save(data);
 		if (saveSong.length > 0) {
