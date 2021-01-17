@@ -6,7 +6,7 @@ export default function Logout() {
 
 	const limpiar = () => {
 		localStorage.clear();
-		history.push('/');
+		history.push('/login');
 	};
 
 	return (
