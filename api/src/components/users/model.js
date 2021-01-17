@@ -26,6 +26,10 @@ let userSchema = new Schema({
 		type: String,
 		required: true,
 	},
+	idFavSong: {
+		type: Array,
+		default: [],
+	},
 });
 
 class User extends Model {
@@ -39,6 +43,12 @@ class User extends Model {
 
 	static async findByEmail(email) {
 		return this.findOne({ email });
+	}
+
+	static async getUserWithoutPassword(id) {
+		let user = User.findById(id);
+		delete user.password;
+		return user;
 	}
 }
 
