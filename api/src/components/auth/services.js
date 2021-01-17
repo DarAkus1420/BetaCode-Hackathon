@@ -1,6 +1,6 @@
 import User from '../users/model';
 import { sign } from 'jsonwebtoken';
-import { JWT_EXPIRATION, JWT_PASS } from '../../config/dotenv';
+import { JWT_EXPIRATION, JWT_PASS, DEBUG } from '../../config/dotenv';
 import { createdResponse, conflictResponse } from '../../utils/responses';
 import userService from '../users/services';
 
@@ -15,7 +15,12 @@ const authService = {
 			expiresIn: JWT_EXPIRATION,
 		});
 		console.log('Jwt creado con exito');
-		return createdResponse('Jwt creado con exito', { jwt, user });
+		return jwt;
+	},
+
+	login(user) {
+		const jwt = this.generateJwt(user);
+		return createdResponse('Jwt creado con exito', { token: jwt, user });
 	},
 	async register(payload) {
 		// evaluate if email alredy used a person
@@ -25,8 +30,10 @@ const authService = {
 		let user = await User.createNewUser(payload);
 		await user.save();
 
+		const jwt = this.generateJwt(user);
+
 		console.log(user.email, 'se registro con exito');
-		return createdResponse('registrado con exito', { token: this.generateJwt(user), user });
+		return createdResponse('registrado con exito', { token: jwt, user });
 	},
 };
 

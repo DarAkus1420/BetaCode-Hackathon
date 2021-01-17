@@ -1,10 +1,12 @@
 import React from 'react';
 
-export default function Almacenar(name, password) {
+export default function Almacenar(props) {
 	const user = {
-		name=name,
-		password=password
+		name=props.name,
+		password=props.password
 	};
+
+	console.log(props);
 
 	return user;
 }

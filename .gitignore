@@ -1,2 +1,5 @@
-front/node_modules/
+frontend/node_modules/
+frontend/.eslintcache
 api/node_modules/
+
+package-lock.json
