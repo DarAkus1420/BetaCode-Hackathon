@@ -18,7 +18,7 @@ export default function Esquema() {
 	};
 
 	return (
-		<div>
+		<div id="contenedor-cards">
 			<div className="col-11 container card-columns" id="contenedor-vista-busqueda">
 				<div className="card">
 					<div className="card-body">
