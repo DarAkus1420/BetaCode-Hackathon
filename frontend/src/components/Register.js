@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
-export default function Register() {
+export default function Register(props) {
+	const { setIsUser } = props;
 	const BASE_URL = 'http://localhost:3000/api/v1';
 	const history = useHistory();
 	//const register = props.register;
@@ -26,6 +27,7 @@ export default function Register() {
 			console.log(response.data);
 			localStorage.setItem('token', response.data.data.token);
 			localStorage.setItem('user', response.data.data.user);
+			setIsUser(true);
 			history.push('/');
 		});
 		console.log(user);

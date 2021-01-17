@@ -1,19 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Logout from './Logout';
 
-export default function Banner() {
-	const [isUser, setIsUser] = useState(false);
-
-	const handleIsUser = () => {
-		if (localStorage.getItem('user') && localStorage.getItem('token')) return true;
-		return false;
-	};
-
-	useEffect(() => {
-		setIsUser(handleIsUser());
-	}, [isUser]);
-
+export default function Banner(props) {
+	const { isUser, setIsUser } = props;
 	return (
 		<header className="header">
 			<div className="bg-dark">
@@ -35,9 +25,9 @@ export default function Banner() {
 						</button>
 						<div className=" collapse navbar-collapse" id="navbarNavAltMarkup">
 							<div className="navg navbar-nav w-100 justify-content-center">
-								<a className="nav-item nav-link active" href="#">
+								<Link className="nav-item nav-link active" to="/">
 									Home <span class="sr-only">(current)</span>
-								</a>
+								</Link>
 
 								{!isUser ? (
 									<div>
@@ -49,7 +39,7 @@ export default function Banner() {
 										</Link>
 									</div>
 								) : (
-									<Logout />
+									<Logout setIsUser={setIsUser} />
 								)}
 							</div>
 						</div>
@@ -57,25 +47,5 @@ export default function Banner() {
 				</div>
 			</div>
 		</header>
-		/*<div className="col-12" id="banner">
-			{!isUser ? (
-				<div>
-					<Link className="btn btn-primary" to="/login">
-						Login
-					</Link>
-					<Link className="btn btn-primary" to="/register">
-						Register
-					</Link>
-				</div>
-			) : (
-				<Logout />
-			)}
-			<div className="col-3">
-				<img src=""></img>
-			</div>
-			<div className="col-9 text-center" id="texto-banner">
-				<h1>Bienvenido a (nombre app)</h1>
-			</div>
-		</div>*/
 	);
 }
