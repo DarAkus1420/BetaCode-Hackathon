@@ -1,5 +1,5 @@
 import userService from './services';
-import songService from '../song/service';
+//import songService from '../song/service';
 import { restResponse, errorResponse } from '../../utils/responses';
 
 const userController = {
@@ -18,7 +18,7 @@ const userController = {
 			let { user } = req;
 			let { song } = req.body;
 			console.log(user, song);
-			await songService;
+			//await songService;
 			const response = await userService.addFavSong(user._id, song._id);
 			restResponse(response, res);
 		} catch (e) {
