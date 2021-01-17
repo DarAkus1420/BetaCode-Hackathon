@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Header() {
+export default function FavoriteSongs() {
 	return (
 		<div className="text-header d-flex align-item-center">
 			<div className="container">
