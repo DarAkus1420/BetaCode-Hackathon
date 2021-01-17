@@ -15,7 +15,7 @@ export default function Banner() {
 	}, [isUser]);
 
 	return (
-		<div class="col-12" id="banner">
+		<div className="col-12" id="banner">
 			{!isUser ? (
 				<div>
 					<Link className="btn btn-primary" to="/login">

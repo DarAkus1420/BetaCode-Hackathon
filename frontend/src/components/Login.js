@@ -62,7 +62,7 @@ export default function Register() {
 								name="password"
 							></input>
 						</div>
-						<button type="submit" class="btn btn-primary" id="boton-login">
+						<button type="submit" className="btn btn-primary" id="boton-login">
 							<i className="fas fa-sign-in-alt"></i> Ingresar
 						</button>
 					</form>
