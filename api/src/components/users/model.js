@@ -27,10 +27,18 @@ let userSchema = new Schema({
 		required: true,
 	},
 	idFavSong: {
-		type: Array,
+		type: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'Song',
+				autopopulate: true,
+			},
+		],
 		default: [],
 	},
 });
+
+userSchema.plugin(require('mongoose-autopopulate'));
 
 class User extends Model {
 	static async createNewUser(userData) {

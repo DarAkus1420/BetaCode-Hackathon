@@ -4,6 +4,32 @@ body {
 	background-blend-mode: unset;
 }
 
+.header {
+	width: 100%;
+}
+
+body:before {
+	content: '';
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(34, 40, 49, 1));
+}
+
+.header:before {
+	content: '';
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(34, 40, 49, 1));
+}
+
+.bg-dark {
+	width: 100%;
+}
+
 #banner {
 	background-color: gray;
 	margin: 3px 3px 3px 3px;
@@ -81,7 +107,7 @@ body {
 }
 
 .footer {
-	background-image: url('https://static.vix.com/es/sites/default/files/styles/4x3/public/m/matrix-codigo-gif.gif');
+	background-image: url('../src/assets/img/1818_XXL 2.jpg');
 	background-position: center center;
 	background-repeat: no-repeat;
 	width: 100%;
@@ -90,4 +116,58 @@ body {
 	padding-top: 5em;
 	opacity: 95%;
 	margin-top: 5em;
+}
+
+#contenedor-cards {
+	margin-top: 5em;
+}
+
+.navg a {
+	color: #f4f4f4;
+	font-size: 23px;
+	padding: 10px 15px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.navg a:hover {
+	background-color: #c1000ca2;
+}
+
+.text-header span {
+	font-size: 1.2em;
+	margin: 0 0 0 5px;
+}
+
+.text-header p {
+	font-size: 1em;
+}
+
+.btn-yo {
+	padding: 7px 12px;
+	color: #f4f4f4;
+	background-color: #c10000e8;
+}
+
+.btn.yo:hover {
+	color: #f4f4f4;
+	background-color: #c1000c;
+}
+
+.busqueda-class {
+	align-items: center;
+	text-align: center;
+	margin-top: 4vh;
+}
+
+#busqueda {
+	width: 70vw;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#botones {
+	margin-left: auto;
+	margin-top: 1vh;
 }

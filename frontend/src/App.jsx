@@ -1,8 +1,9 @@
 import './App.css';
+import React, { useEffect, useState } from 'react';
 //import { useState } from 'react';
 import Login from './components/Login';
 import Register from './components/Register';
-//import Banner from './components/Banner';
+import Banner from './components/Banner';
 import Home from './components/Home';
 //import Multiplicaciones from './components/Multiplicaciones';
 //import Validar from './components/Validar';
@@ -11,7 +12,16 @@ import Home from './components/Home';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
-	//const [count, setCount] = useState(13);
+	const [isUser, setIsUser] = useState(false);
+
+	const handleIsUser = () => {
+		if (localStorage.getItem('user') && localStorage.getItem('token')) return true;
+		return false;
+	};
+
+	useEffect(() => {
+		setIsUser(handleIsUser());
+	}, [isUser]);
 
 	return (
 		//<div className="App">
@@ -22,15 +32,16 @@ function App() {
 		//<button onClick={() => setCount(count + 1)}>Click me</button>
 		//</div>
 		<Router>
+			<Banner isUser={isUser} setIsUser={setIsUser} />
 			<Switch>
 				<Route exact path="/">
-					<Home />
+					<Home isUser={isUser} setIsUser={setIsUser} />
 				</Route>
 				<Route path="/login">
-					<Login />
+					<Login setIsUser={setIsUser} />
 				</Route>
 				<Route path="/register">
-					<Register />
+					<Register setIsUser={setIsUser} />
 				</Route>
 			</Switch>
 		</Router>
