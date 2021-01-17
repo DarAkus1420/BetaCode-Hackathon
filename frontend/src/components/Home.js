@@ -12,7 +12,7 @@ export default function Home(props) {
 		<div>
 			<Busqueda setSongs={setSongs} />
 			{isUser ? <FavoriteSongs /> : ''}
-			<Esquema songs={songs} />
+			<Esquema songs={songs} isUser={isUser} />
 		</div>
 	);
 }
