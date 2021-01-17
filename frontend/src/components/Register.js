@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 export default function Register() {
 	const BASE_URL = 'http://localhost:3000/api/v1';
 	const history = useHistory();
+	//const register = props.register;
 	const [user, setUser] = useState({
+		name: '',
+		lastName: '',
 		email: '',
 		password: '',
 	});
@@ -19,7 +22,7 @@ export default function Register() {
 
 	const sendUser = event => {
 		event.preventDefault();
-		axios.post(`${BASE_URL}/auth/login`, { ...user }).then(response => {
+		axios.post(`${BASE_URL}/auth/register`, { ...user }).then(response => {
 			console.log(response.data);
 			localStorage.setItem('token', response.data.data.token);
 			localStorage.setItem('user', response.data.data.user);
@@ -27,6 +30,7 @@ export default function Register() {
 		});
 		console.log(user);
 	};
+	useEffect(() => {}, []);
 
 	return (
 		<div className="modal-dialog text-center">
@@ -36,6 +40,26 @@ export default function Register() {
 						<img src=""></img>
 					</div>
 					<form className="col-12" onSubmit={sendUser}>
+						<div className="form-group" id="name-group">
+							<input
+								type="text"
+								class="form-control"
+								placeholder="Nombre"
+								name="name"
+								onChange={handleInputChange}
+								autocomplete="off"
+							></input>
+						</div>
+						<div className="form-group" id="lastName-group">
+							<input
+								type="text"
+								class="form-control"
+								placeholder="Apellido"
+								name="lastName"
+								onChange={handleInputChange}
+								autocomplete="off"
+							></input>
+						</div>
 						<div className="form-group" id="email-group">
 							<input
 								type="text"
