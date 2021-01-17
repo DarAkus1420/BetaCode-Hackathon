@@ -3,10 +3,10 @@ import { useState } from 'react';
 import Login from './components/Login';
 import Banner from './components/Banner';
 import Esquema from './components/Esquema';
-//import Saludetes from './components/Saludetes';
 //import Multiplicaciones from './components/Multiplicaciones';
 //import Validar from './components/Validar';
 import Footer from './components/Footer';
+//import Busqueda from './components/Busqueda';
 
 function App() {
 	const [count, setCount] = useState(13);
@@ -15,11 +15,9 @@ function App() {
 		<div className="App">
 			<Banner />
 			<Login />
-
 			<Esquema />
 			<Footer />
 			{count}
-
 			<button onClick={() => setCount(count + 1)}>Click me</button>
 		</div>
 	);
