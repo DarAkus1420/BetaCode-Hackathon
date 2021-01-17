@@ -1,8 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Banner() {
 	return (
 		<div class="col-12" id="banner">
+			<Link className="btn btn-primary" to="/login">
+				Login
+			</Link>
+			<Link className="btn btn-primary" to="/register">
+				Register
+			</Link>
 			<div class="col-3">
 				<img src=""></img>
 			</div>

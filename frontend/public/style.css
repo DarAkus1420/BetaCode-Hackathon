@@ -75,3 +75,19 @@ body {
 #texto-banner {
 	padding-left: 25%;
 }
+
+.card {
+	width: 18rem;
+}
+
+.footer {
+	background-image: url('https://static.vix.com/es/sites/default/files/styles/4x3/public/m/matrix-codigo-gif.gif');
+	background-position: center center;
+	background-repeat: no-repeat;
+	width: 100%;
+	min-height: 200px;
+	color: gray;
+	padding-top: 5em;
+	opacity: 95%;
+	margin-top: 5em;
+}
