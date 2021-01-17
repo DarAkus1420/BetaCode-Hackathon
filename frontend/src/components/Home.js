@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Esquema from './Esquema';
-import Header from './Header';
 import Busqueda from './Busqueda';
 import FavoriteSongs from './FavoriteSongs';
 //import Footer from './Footer';
 
 export default function Home(props) {
 	const { isUser } = props;
+
+	const [songs, setSongs] = useState([]);
 	return (
 		<div>
-			<Header />
-			<Busqueda />
+			<Busqueda setSongs={setSongs} />
 			{isUser ? <FavoriteSongs /> : ''}
-			<Esquema />
+			<Esquema songs={songs} />
 		</div>
 	);
 }
