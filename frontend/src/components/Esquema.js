@@ -2,7 +2,7 @@ import React from 'react';
 import Song from './Song';
 
 export default function Esquema(props) {
-	const { songs } = props;
+	const { songs, isUser } = props;
 
 	return (
 		<div id="contenedor-cards">

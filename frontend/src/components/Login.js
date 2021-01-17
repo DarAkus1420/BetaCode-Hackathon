@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 export default function Register(props) {
 	const { setIsUser } = props;
-	const BASE_URL = 'http://localhost:3000/api/v1';
+	const BASE_URL = process.env.REACT_APP_BASE_URL;
 	const history = useHistory();
 	const [user, setUser] = useState({
 		email: '',

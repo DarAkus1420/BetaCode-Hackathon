@@ -1,26 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const Song = props => {
-	const { song, isUser } = props;
-	useEffect(() => {
-		console.log(song);
-	}, []);
+	const { song } = props;
 
-	const sendFavorite = event => {
-		event.preventDefault();
-		axios
-			.post(`${BASE_URL}/auth/login`, { ...user })
-			.then(response => {
-				localStorage.setItem('token', response.data.data.token);
-				localStorage.setItem('user', response.data.data.user);
-				setIsUser(true);
-				history.push('/');
-			})
-			.catch(e => {
-				console.log(e.response);
-				setBadPass(true);
-			});
-	};
 	return (
 		<div className="card">
 			<div className="card-body">
@@ -33,7 +15,6 @@ const Song = props => {
 				<p>{song.album.name}</p>
 				<p>{song.artists.name}</p>
 			</div>
-			<div>{isUser ? <button onClick={sendFavorite}>Agregar a favoritos</button> : ''}</div>
 		</div>
 	);
 };

@@ -12,13 +12,13 @@ userRouter.get(
 );
 
 userRouter.post(
-	'user/song',
+	'/user/song',
 	passport.authenticate('jwt', { session: false }),
 	userController.addFavSong
 );
 
 userRouter.delete(
-	'user/song',
+	'/user/song',
 	passport.authenticate('jwt', { session: false }),
 	userController.removeFavSong
 );
