@@ -1,19 +1,22 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const SearchSchema = new Schema(
+const SongSchema = new Schema(
 	{
-		song: {
+		spotifyId: {
+			type: String,
+			required: true,
+		},
+		name: {
 			type: String,
 			required: true,
 			uppercase: true,
 		},
-		artist: {
-			type: String,
+		artists: {
+			type: Object,
 			required: true,
-			uppercase: true,
 		},
-		response: {
+		details: {
 			type: Object,
 			required: true,
 		},
@@ -23,4 +26,4 @@ const SearchSchema = new Schema(
 	}
 );
 
-export default mongoose.model('Search', SearchSchema);
+export default mongoose.model('Song', SongSchema);
