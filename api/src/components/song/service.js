@@ -3,6 +3,7 @@ import spotifyService from '../../services/spotify';
 import youtubeService from '../../services/youtube';
 import lyricsService from '../../services/lyrics';
 import configDefault from '../../config';
+import songRepository from './repository';
 
 const { SEARCH_SUCCESS } = configDefault.responseMessage.songs;
 
@@ -35,6 +36,16 @@ const songService = {
 		let extendsInfoData = await addAditionalData(spotifyData);
 
 		return okResponse(SEARCH_SUCCESS, { data: extendsInfoData });
+	},
+	async save(data) {
+		let existSong = await songRepository.searchByIdSpotify(data.spotifyId);
+		if (existSong) return existSong;
+
+		let saveSong = await songRepository.save(data);
+		if (saveSong.length > 0) {
+			return saveSong[0];
+		}
+		return null;
 	},
 };
 

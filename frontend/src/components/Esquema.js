@@ -1,25 +1,15 @@
 import React from 'react';
+import Song from './Song';
 
-export default function Esquema() {
-	const tema = {
-		nombre: 'Nothing Else Matters',
-		album: 'Black Album',
-		banda: 'Metallica',
-	};
+export default function Esquema(props) {
+	const { songs, isUser } = props;
+
 	return (
-		<div>
-			<div className="col-11" id="contenedor-vista-busqueda">
-				<div className="card">
-					<img
-						src="https://images-na.ssl-images-amazon.com/images/I/31PS7MIr-ZL._SX300_SY300_QL70_ML2_.jpg"
-						className="card-img-top"
-					></img>
-					<div className="card-body">
-						<p>{tema.nombre}</p>
-						<p>{tema.album}</p>
-						<p>{tema.banda}</p>
-					</div>
-				</div>
+		<div id="contenedor-cards">
+			<div className="col-11 container card-columns" id="contenedor-vista-busqueda">
+				{songs.map(song => {
+					return <Song song={song} isUser={isUser} />;
+				})}
 			</div>
 		</div>
 	);

@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
-export default function Register() {
-	const BASE_URL = 'http://localhost:3000/api/v1';
+export default function Register(props) {
+	const { setIsUser } = props;
+	const BASE_URL = process.env.REACT_APP_BASE_URL;
 	const history = useHistory();
 	const [user, setUser] = useState({
 		email: '',
 		password: '',
 	});
+
+	const [badPass, setBadPass] = useState(false);
 
 	const handleInputChange = event => {
 		setUser({
@@ -19,13 +22,18 @@ export default function Register() {
 
 	const sendUser = event => {
 		event.preventDefault();
-		axios.post(`${BASE_URL}/auth/login`, { ...user }).then(response => {
-			console.log(response.data);
-			localStorage.setItem('token', response.data.data.token);
-			localStorage.setItem('user', response.data.data.user);
-			history.push('/');
-		});
-		console.log(user);
+		axios
+			.post(`${BASE_URL}/auth/login`, { ...user })
+			.then(response => {
+				localStorage.setItem('token', response.data.data.token);
+				localStorage.setItem('user', response.data.data.user);
+				setIsUser(true);
+				history.push('/');
+			})
+			.catch(e => {
+				console.log(e.response);
+				setBadPass(true);
+			});
 	};
 
 	return (
@@ -56,10 +64,11 @@ export default function Register() {
 								name="password"
 							></input>
 						</div>
-						<button type="submit" class="btn btn-primary" id="boton-login">
+						<button type="submit" className="btn btn-primary" id="boton-login">
 							<i className="fas fa-sign-in-alt"></i> Ingresar
 						</button>
 					</form>
+					<p>{badPass ? 'Datos erroneos' : ''}</p>
 				</div>
 			</div>
 		</div>

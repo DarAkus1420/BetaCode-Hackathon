@@ -26,7 +26,19 @@ let userSchema = new Schema({
 		type: String,
 		required: true,
 	},
+	idFavSong: {
+		type: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: 'Song',
+				autopopulate: true,
+			},
+		],
+		default: [],
+	},
 });
+
+userSchema.plugin(require('mongoose-autopopulate'));
 
 class User extends Model {
 	static async createNewUser(userData) {
@@ -39,6 +51,12 @@ class User extends Model {
 
 	static async findByEmail(email) {
 		return this.findOne({ email });
+	}
+
+	static async getUserWithoutPassword(id) {
+		let user = User.findById(id);
+		delete user.password;
+		return user;
 	}
 }
 

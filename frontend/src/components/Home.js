@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Esquema from './Esquema';
-import Banner from './Banner';
+import Busqueda from './Busqueda';
 //import Footer from './Footer';
 
-export default function Home() {
+export default function Home(props) {
+	const { isUser } = props;
+
+	const [songs, setSongs] = useState([]);
 	return (
 		<div>
-			<Banner />
-			<Esquema />
+			<Busqueda setSongs={setSongs} />
+			<Esquema songs={songs} isUser={isUser} />
 		</div>
 	);
 }
